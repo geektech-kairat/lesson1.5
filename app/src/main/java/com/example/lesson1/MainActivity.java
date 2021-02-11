@@ -2,23 +2,16 @@ package com.example.lesson1;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.res.ColorStateList;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.text.InputType;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
-import android.view.Gravity;
-import android.view.MotionEvent;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.util.Objects;
-import java.util.Timer;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class MainActivity extends AppCompatActivity {
     protected EditText login;
@@ -26,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
 
     protected String passwordStr;
     protected String loginStr;
+
+    protected String regex = "[а-яёА-ЯЁ]+";
 
 
     protected Button enter;
@@ -43,8 +38,8 @@ public class MainActivity extends AppCompatActivity {
         login = findViewById(R.id.addMail);
         password = findViewById(R.id.addPassForAddMail);
 
-//        loginStr = login.getText().toString();
-//        passwordStr = password.getText().toString();
+        loginStr = login.getText().toString();
+        passwordStr = password.getText().toString();
 
         enter = findViewById(R.id.enter);
         showPass = findViewById(R.id.eye);
@@ -55,6 +50,19 @@ public class MainActivity extends AppCompatActivity {
 
     public void oneStep() {
         enter.setOnClickListener(v -> {
+            String str1 = login.getText().toString();// через глобальный не получилось сделать пришлось
+            // создовать одтельный стригновый перенный и здесь проверить на латинь
+            String str2 = password.getText().toString();
+
+            Pattern pattern = Pattern.compile(regex);
+            Matcher m1 = pattern.matcher(str1);
+            Matcher m2 = pattern.matcher(str2);
+            if (m1.find()){
+                login.setError("Используйте только латинские буквы и цифры!");
+            }if (m2.find()){
+                login.setError("используйте только латинские буквы и цифры! ");
+            }
+
             if (login.length() <= 0) {
                 login.setError("Введите логин ! ");
             }
@@ -75,5 +83,7 @@ public class MainActivity extends AppCompatActivity {
                                            }, 3000
             );
         });
+
     }
 }
+
