@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">lesson1</string>
+    <string name="add_mail">Введите вашу почту</string>
+    <string name="addPass">Введите пароль</string>
+    <string name="toComeIn">Войти</string>
+    <string name="forgotpass">Забыл пароль?</string>
+    <string name="toCreateAc">Регистрация</string>
+    <string name="welcome">Добро пожаловать!</string>
+    <string name="entry">ВХОД</string>
+</resources>

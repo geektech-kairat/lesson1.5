@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/door"
+    tools:context=".MainActivity">
+
+
+    <EditText
+        android:id="@+id/addMail"
+        android:layout_width="350dp"
+        android:layout_height="45dp"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginBottom="232dp"
+        android:background="@color/white"
+        android:hint="@string/add_mail"
+        android:inputType="textEmailAddress"
+        android:paddingStart="20dp"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="RtlSymmetry" />
+
+    <EditText
+        android:id="@+id/addPassForAddMail"
+        android:layout_width="350dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/white"
+        android:hint="@string/addPass"
+        android:inputType="textPassword"
+        android:paddingHorizontal="15dp"
+        android:paddingStart="20dp"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/addMail"
+        app:layout_constraintTop_toBottomOf="@+id/addMail"
+        tools:ignore="RtlSymmetry" />
+
+    <Button
+        android:id="@+id/enter"
+        android:layout_width="350dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#FF9800"
+        android:text="@string/toComeIn"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/addMail"
+        app:layout_constraintTop_toBottomOf="@+id/addPassForAddMail" />
+
+    <TextView
+        android:id="@+id/forgotPass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="25dp"
+        android:text="@string/forgotpass"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textStyle="normal"
+        app:layout_constraintStart_toStartOf="@+id/addMail"
+        app:layout_constraintTop_toBottomOf="@+id/enter" />
+
+    <ImageButton
+        android:id="@+id/eye"
+        style="@android:style/Widget.DeviceDefault.ImageButton"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/eye_foreground"
+        app:layout_constraintBottom_toBottomOf="@+id/addPassForAddMail"
+        app:layout_constraintEnd_toEndOf="@+id/addPassForAddMail" />
+
+    <TextView
+        android:id="@+id/registration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:text="@string/toCreateAc"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/forgotPass"
+        app:layout_constraintStart_toEndOf="@+id/forgotPass" />
+
+    <TextView
+        android:id="@+id/Welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="424dp"
+        android:text="@string/welcome"
+        android:textColor="@color/white"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/Welcome2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="       Выполните вход \n или зарегистрируйтесь."
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Welcome"
+        tools:ignore="HardcodedText" />
+    <TextView
+        android:id="@+id/entry"
+        android:textColor="@color/white"
+        android:text="@string/entry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
