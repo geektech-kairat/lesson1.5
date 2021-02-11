@@ -39,54 +39,40 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         login = findViewById(R.id.addMail);
         password = findViewById(R.id.addPassForAddMail);
 
-        loginStr = login.getText().toString();
-        passwordStr = password.getText().toString();
+//        loginStr = login.getText().toString();
+//        passwordStr = password.getText().toString();
 
         enter = findViewById(R.id.enter);
         showPass = findViewById(R.id.eye);
 
-        oneStep();
-        btnShowPass();
+        oneStep();//для error
+        btnShowPass(); // для показа пароля
     }
 
     public void oneStep() {
-
-
         enter.setOnClickListener(v -> {
-            if (login.length() <= 0 ) {
+            if (login.length() <= 0) {
                 login.setError("Введите логин ! ");
-//                login.setHintTextColor(Color.RED);
-//                    Toast toast = Toast.makeText(MainActivity.this, "hiiii", Toast.LENGTH_LONG);
-//                    toast.setGravity(Gravity.CENTER, 0 , 0);
-//                    toast.show();
-
-//                    login.setOnClickListener(v1 -> {
-//                        login.setHintTextColor(Color.GRAY);
-//                    });
-//                }if(passStr.equals("")){
-//                    password.setHintTextColor(Color.RED);
-//                }
-            }if (password.length() <= 0) {
+            }
+            if (password.length() <= 0) {
                 password.setError("Введите пароль ! ");
             }
-
         });
-
-
     }
 
     public void btnShowPass() {
         showPass.setOnClickListener(v -> {
             password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());//показать пароль
-            new java.util.Timer().schedule(new java.util.TimerTask(){
-                @Override
-                public void run() {
-                    password.setTransformationMethod(new PasswordTransformationMethod());//скрыть через тайм
-                }
-            },3000
+            new java.util.Timer().schedule(new java.util.TimerTask() {
+                                               @Override
+                                               public void run() {
+                                                   password.setTransformationMethod(new PasswordTransformationMethod());//скрыть через тайм
+                                               }
+                                           }, 3000
             );
         });
     }
