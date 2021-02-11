@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     protected EditText password;
 
     protected String passwordStr;
+    protected String loginStr;
 
 
     protected Button enter;
@@ -33,13 +34,16 @@ public class MainActivity extends AppCompatActivity {
     protected TextView toCreateAc;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         login = findViewById(R.id.addMail);
         password = findViewById(R.id.addPassForAddMail);
+
+        loginStr = login.getText().toString();
+        passwordStr = password.getText().toString();
+
         enter = findViewById(R.id.enter);
         showPass = findViewById(R.id.eye);
 
@@ -51,8 +55,9 @@ public class MainActivity extends AppCompatActivity {
 
 
         enter.setOnClickListener(v -> {
-            if (login.length() == 0) {
-                login.setHintTextColor(Color.RED);
+            if (login.length() <= 0 ) {
+                login.setError("Введите логин ! ");
+//                login.setHintTextColor(Color.RED);
 //                    Toast toast = Toast.makeText(MainActivity.this, "hiiii", Toast.LENGTH_LONG);
 //                    toast.setGravity(Gravity.CENTER, 0 , 0);
 //                    toast.show();
@@ -63,26 +68,35 @@ public class MainActivity extends AppCompatActivity {
 //                }if(passStr.equals("")){
 //                    password.setHintTextColor(Color.RED);
 //                }
-            }
-            if (password.length() == 0) {
-                password.setHintTextColor(Color.RED);
+            }if (password.length() <= 0) {
+                password.setError("Введите пароль ! ");
             }
 
         });
 
 
     }
-    public void btnShowPass(){
+
+    public void btnShowPass() {
         showPass.setOnClickListener(v -> {
-            Toast.makeText(this, password.getText(), Toast.LENGTH_LONG).show();
+            password.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
+//            Toast.makeText(this, password.getText(), Toast.LENGTH_LONG).show();
 //            password.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
 //            Timer timer = new Timer();
+            new java.util.Timer().schedule(new java.util.TimerTask(){
+
+                @Override
+                public void run() {
+                    password.setTransformationMethod(new PasswordTransformationMethod());
+                }
+            },3000
+            );
+
         });
 
 //        showPass.setOnClickListener(v -> {
-//            password.setTransformationMethod(PasswordTransformationMethod.getInstance());;
+//            password.setTransformationMethod(new PasswordTransformationMethod());
 //        });
-
 
 
     }
