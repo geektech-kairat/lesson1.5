@@ -6,6 +6,7 @@ import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.InputType;
+import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.view.Gravity;
 import android.view.MotionEvent;
@@ -79,25 +80,14 @@ public class MainActivity extends AppCompatActivity {
 
     public void btnShowPass() {
         showPass.setOnClickListener(v -> {
-            password.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
-//            Toast.makeText(this, password.getText(), Toast.LENGTH_LONG).show();
-//            password.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
-//            Timer timer = new Timer();
+            password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());//показать пароль
             new java.util.Timer().schedule(new java.util.TimerTask(){
-
                 @Override
                 public void run() {
-                    password.setTransformationMethod(new PasswordTransformationMethod());
+                    password.setTransformationMethod(new PasswordTransformationMethod());//скрыть через тайм
                 }
             },3000
             );
-
         });
-
-//        showPass.setOnClickListener(v -> {
-//            password.setTransformationMethod(new PasswordTransformationMethod());
-//        });
-
-
     }
 }
